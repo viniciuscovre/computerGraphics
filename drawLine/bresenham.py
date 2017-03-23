@@ -1,4 +1,4 @@
-def bresenham(start, end):
+def getLine(start, end):
     """Bresenham's Line Algorithm
     Produces a list of tuples from start and end
  
