@@ -1,4 +1,4 @@
-''' 
+'''
 EXERCISE
     Draw the straight line defined by the points (4,7) and (14,14) using the following algorithms for line generation:
         >>> Bresenham
@@ -18,7 +18,7 @@ if answer == 'a':
 #     resultingTuple = DDA((4,7),(14,14))
 
 # Set 50x50 window
-windowSurface = pygame.display.set_mode((50,50),0,32)
+windowSurface = pygame.display.set_mode((50, 50), 0, 32)
 
 # Set caption in the display
 pygame.display.set_caption('Straight Line')
