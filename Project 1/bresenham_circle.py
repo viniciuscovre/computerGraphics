@@ -5,7 +5,7 @@ def getCircle(center, radius):
     Bresenham's Circle Algorithm
     Produces a list of tuples/pixels (x,y) to be printed
     """
-    # Setup initial conditions
+    # Setting up initial values
     x = 0
     y = radius
     d = 1 - radius
