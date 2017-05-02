@@ -12,3 +12,9 @@ SIZE = (WIDTH + 2, HEIGHT + 2) # "+2" is the padding ... +2 rows and +2 cols
 
 # Pixel Color
 WHITE = (255, 255, 255)
+
+# Squared Mask Size
+MASK_SIZE = 3
+
+# Diviver
+DIV = MASK_SIZE * MASK_SIZE
