@@ -34,7 +34,7 @@ def getLine(start, end):
     # Calculating increment in y
     yInc = 1 if y1 < y2 else -1
 
-    # Iterate to generate points of the line
+    # Iterating to generate points of the line
     y = y1
     for x in range(x1, x2 + 1):
         pixel = (y, x) if invertedCoordinates else (x,y)
