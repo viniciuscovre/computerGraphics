@@ -1,3 +1,4 @@
+import dda
 import bresenham_line
 import bresenham_circle
 
@@ -9,12 +10,23 @@ def userInput():
 
     # Getting user's choice of algorithm
     print("\nChoose one algorithm:\n")
-    print("\ta.Bresenham Line\n")
-    print("\tb.Bresenham Circle\n\t")
-    answer = input()
+    print("\ta.DDA\n")
+    print("\tb.Bresenham Line\n")
+    print("\tc.Bresenham Circle\n")
+    answer = str.lower(input())
     print("\n********************************")
 
-    if str.lower(answer) == 'a':
+    if answer == 'a':
+        print("************** DDA *************")
+        print("\nFrom point:\n")
+        # +1 to place the pixel considering the padding
+        x0 = int(input("\tx0: ")) + 1
+        y0 = int(input("\ty0: ")) + 1
+        print("\nTo point:\n")
+        xF = int(input("\txF: ")) + 1
+        yF = int(input("\tyF: ")) + 1
+        listOfPoints = dda.getLine((x0,y0),(xF,yF))
+    elif answer == 'b':
         print("******** BRESENHAM LINE ********")
         print("\nFrom point:\n")
         # +1 to place the pixel considering the padding
