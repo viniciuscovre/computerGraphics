@@ -1,19 +1,12 @@
-% Get png file in current folder (should be only one image)
+% Get png file in current folder (should only be one image)
 file = dir('*.png');
 
 % Get input image
 img = im2double(imread(file.name));
 
-% % Get file name
-% name = strsplit(file.name, '.');
-% name = name(1);
-
-fprintf('Select the type of blur for %s:\n', file.name);
-fprintf('\n  1- Gaussian Blur');
-fprintf('\n  2- Motion Blur Simulation');
-fprintf('\n  3- Skip blurring step');
-answer = input('\n\nAnswer: ');
-
+% BLURRING STEP
+answer = blurringMenu(file.name);
+isBlurred = true;
 switch answer
     case 1
         % Gaussian Blur
@@ -21,11 +14,35 @@ switch answer
     case 2
         % Motion Blur
         blurredImage = motionBlur(img);
+    case 3
+        blurredImage = img;
+        isBlurred = false;
     otherwise
-        goto('NO_BLUR');
+        error('Invalid option! Choose a valid one...\n\n');
+        answer = blurringMenu(file.name);
 end
 
-figure, imshow(blurredImage);
-title('Blurred Image');
+% Number of columns in the figure display
+col = 2;
 
-% LABEL NO_BLUR
+if isBlurred
+    col = 3;
+    fprintf('Success in blurring image!');
+    subplot(1,col,1); imshow(img); title('Input');
+    subplot(1,col,2); imshow(blurredImage); title('Blurred');
+else
+    subplot(1,col,1); imshow(img); title('Input');
+end
+
+% DEBLURRING STEP
+answer = deblurringMenu;
+switch answer
+    case 1
+        % Wiener Filter
+        deblurredImage = wienerDeblur(blurredImage);
+    otherwise
+        error('Invalid option! Choose a valid one...\n\n');
+        answer = deblurringMenu();
+end
+
+subplot(1,col,col); imshow(deblurredImage); title('Deblurred');
