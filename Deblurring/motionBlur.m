@@ -13,8 +13,8 @@ function outputImg = motionBlur(inputImg, LEN, THETA)
 %     outputImg --> Blurred image
 
 if nargin == 1
-    LEN = 21;
-    THETA = 11;
+    LEN = 15; %21
+    THETA = 11; %11
 elseif nargin == 2
     THETA = 11;
 elseif nargin > 3 | nargin < 1

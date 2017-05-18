@@ -5,44 +5,23 @@ file = dir('*.png');
 img = im2double(imread(file.name));
 
 % BLURRING STEP
-answer = blurringMenu(file.name);
-isBlurred = true;
-switch answer
-    case 1
-        % Gaussian Blur
-        blurredImage = gaussianBlur(img);
-    case 2
-        % Motion Blur
-        blurredImage = motionBlur(img);
-    case 3
-        blurredImage = img;
-        isBlurred = false;
-    otherwise
-        error('Invalid option! Choose a valid one...\n\n');
-        answer = blurringMenu(file.name);
-end
+[isBlurred, blurredImage] = blurringMenu(file.name, img);
 
 % Number of columns in the figure display
 col = 2;
-
 if isBlurred
     col = 3;
-    fprintf('Success in blurring image!');
+    fprintf('Success in blurring image!\n');
     subplot(1,col,1); imshow(img); title('Input');
     subplot(1,col,2); imshow(blurredImage); title('Blurred');
 else
+    fprintf('No blurring applied!\n');
     subplot(1,col,1); imshow(img); title('Input');
 end
 
+fprintf('\n**********************************************\n')
+
 % DEBLURRING STEP
-answer = deblurringMenu;
-switch answer
-    case 1
-        % Wiener Filter
-        deblurredImage = wienerDeblur(blurredImage);
-    otherwise
-        error('Invalid option! Choose a valid one...\n\n');
-        answer = deblurringMenu();
-end
+deblurredImage = deblurringMenu(blurredImage);
 
 subplot(1,col,col); imshow(deblurredImage); title('Deblurred');
