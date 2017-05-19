@@ -3,11 +3,15 @@ function deblurredImage = deblurringMenu(blurredImage)
 
 fprintf('\n--> DEBLURRING STEP');
 fprintf('\nSelect the deblurring methodology:\n');
-fprintf('\n  1 - Wiener Filter');
+fprintf('\n  1 - Lucy-Richardson Algorithm');
+fprintf('\n  2 - Wiener Filter');
 answer = input('\n\nAnswer: ');
 
 switch answer
     case 1
+        % Lucy-Richardson Algorithm
+        deblurredImage = lucyDeblur(blurredImage);
+    case 2
         % Wiener Filter
         deblurredImage = wienerDeblur(blurredImage);
     otherwise
