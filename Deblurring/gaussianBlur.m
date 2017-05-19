@@ -1,4 +1,4 @@
-function outputImg = gaussianBlur(inputImg, stdDev)
+function outputImg = gaussianBlur(inputImg, sigma)
 % Gaussian Blur
 %
 % DESCRIPTION:
@@ -6,18 +6,28 @@ function outputImg = gaussianBlur(inputImg, stdDev)
 %
 % INPUT:
 %     inputImg --> Image to be blurred
-%     stdDev --> Standard deviation for gaussian filter
+%     sigma --> Standard deviation for gaussian filter
 %
 % OUTPUT:
 %     outputImg --> Blurred image
 
 if nargin == 1
-    stdDev = 2;
+    sigma = 5;
 elseif nargin > 2 | nargin < 1
     error('Invalid number of input arguments!');
     pause
 end
 
 % Blurs the image with gaussian filter (std deviation: 2)
-outputImg = imgaussfilt(inputImg, stdDev);
-% The greater is the std deviation, the more blurred the image
+
+% Create a 5x5 gaussian mask, considering the standard deviation (sigma)
+PSF = fspecial('gaussian', 5, sigma);
+% The Gaussian filter represents a point-spread function, PSF
+
+% Filters image with the given PSF
+outputImg = imfilter(inputImg, PSF, 'symmetric', 'conv');
+
+% The greater is sigma, the more blurred the image (in x-axis)
+
+% Sigma can also be considered in y-axis by adding another parameter. E.g.:
+% outputImg = imgaussfilt(inputImg,[sigma_x sigma_y]);
