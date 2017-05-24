@@ -4,6 +4,7 @@ function [isBlurred, blurredImage] = blurringMenu(fileName, img)
 fprintf('\n--> BLURRING STEP');
 fprintf('\nSelect the type of blur for %s:\n', fileName);
 fprintf('\n  1 - Gaussian Blur');
+% fprintf('\n  2 - Wiener Blur');
 fprintf('\n  2 - Motion Blur Simulation');
 fprintf('\n  3 - Skip blurring step');
 answer = input('\n\nAnswer: ');
@@ -13,6 +14,9 @@ switch answer
     case 1
         % Gaussian Blur
         blurredImage = gaussianBlur(img);
+    % case 2
+    %     % Wiener Filter
+    %     blurredImage = wienerBlur(img);
     case 2
         % Motion Blur
         blurredImage = motionBlur(img);
