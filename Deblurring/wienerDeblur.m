@@ -31,6 +31,8 @@ signal_var = var(inputImage(:));
 % estimated_NSR = noise_var / signal_var;
 
 % % Quantized image and Estimated NSR
+% https://www.mathworks.com/help/images/examples/deblurring-images-using-a-wiener-filter.html %
+
 uniform_quantization_var = (1/256)^2 / 12;
 estimated_NSR = uniform_quantization_var / signal_var;
 
