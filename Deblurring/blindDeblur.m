@@ -6,6 +6,7 @@ if nargin ~= 1
 end
 
 PSF = fspecial('motion',13,45);
-INITPSF = ones(size(PSF));
+INITPSF = ones([9 9]);
+% INITPSF = ones(size(PSF));
 
 outputImg = deconvblind(inputImage,INITPSF,30);
