@@ -5,8 +5,9 @@ if nargin ~= 1
     pause
 end
 
-PSF = fspecial('motion',13,45);
 INITPSF = ones([9 9]);
+
+% PSF = fspecial('motion',13,45);
 % INITPSF = ones(size(PSF));
 
-outputImg = deconvblind(inputImage,INITPSF,30);
+outputImg = deconvblind(inputImage,INITPSF,15);
